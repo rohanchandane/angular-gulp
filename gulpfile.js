@@ -3,7 +3,6 @@ var gulp = require('gulp');
 // var $ = require('gulp-load-plugins');
 
 var wrench = require('wrench');
-var config = require('./gulpfile.conf');
 
 /**
  *  This will load all js files in the gulp directory
@@ -17,8 +16,5 @@ wrench.readdirSyncRecursive('./gulp').filter(function(file) {
 
 gulp.task('build', ['jshint-eslint-jscs', 'fonts', 'sass', 'wiredep', 'imagemin', 'scripts', 'styles'], function () {
   gulp.start('clean:tmp');
-});
-
-gulp.task('watch', function () {
-  gulp.watch([config.scriptsByOrder, config.scssByOrder, config.html, config.images], ['build']);
+  gulp.start('watch');
 });

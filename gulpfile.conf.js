@@ -7,7 +7,7 @@ var config = {
     '!app/**/*.spec.js'
   ],
   images: 'app/assets/images/**/*.png',
-  html: 'app/**/*.html',
+  html: ['!app/index.html', 'app/**/*.html'],
   fonts: 'app/assets/fonts/*.*',
   scssByOrder: [
     'app/shared/**/*.scss',

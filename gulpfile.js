@@ -14,7 +14,7 @@ wrench.readdirSyncRecursive('./gulp').filter(function(file) {
   require('./gulp/' + file);
 });
 
-gulp.task('build', ['jshint-eslint-jscs', 'fonts', 'sass', 'wiredep', 'imagemin', 'scripts', 'styles'], function () {
+gulp.task('build', ['jshint-eslint-jscs', 'fonts', 'sass', 'wiredep', 'imagemin', 'scripts', 'styles', 'html'], function () {
   gulp.start('clean:tmp');
-  gulp.start('watch');
+  gulp.start('browser-sync');
 });

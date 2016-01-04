@@ -6,8 +6,8 @@ var gulpif = require('gulp-if');
 var minifyHtml = require('gulp-minify-html');
 var config = require('../gulpfile.conf');
 
-gulp.task('html', function () {
-  console.log('minifying html');
+gulp.task('html', ['clean'], function () {
+  console.log('minifying html', config.html);
   var options = {
     empty: true,
     conditionals: true,

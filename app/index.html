@@ -1,4 +1,4 @@
-<html>
+<html ng-app="myaccount">
   <head>
     <title>Hello Gulp!</title>
     <!-- build:css assets/css/vender.css -->
@@ -12,6 +12,20 @@
     <!-- endbuild -->
   </head>
   <body>
+    <header>
+      <div ui-view="header"></div>
+    </header>
+    <div ui-view="container">
+    </div>
+    <footer id="mainFooter" ui-view="footer">
+    </footer>
+
+
+    <div ng-controller="MainCtrl">
+      <h1 class="h1" style="font-family: Bebasnenu_book;"> Hello {{name}}! </h1> <img src="assets/images/gulp.png">
+      <h3 class="skrill-title" style="font-family: Bebas;">Welcome to Skrill</h3>
+    </div>
+
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <!-- endbower -->
@@ -21,7 +35,6 @@
     <!-- inject:js -->
     <!-- endinject -->
     <!-- endbuild -->
-    <h1 class="h1" style="font-family: Bebasnenu_book;"> Hello Gulp! </h1> <img src="assets/images/gulp.png">
-    <h3 class="skrill-title" style="font-family: Bebas;">Welcome to Skrill</h3>
+
   </body>
 </html>

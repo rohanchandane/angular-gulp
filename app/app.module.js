@@ -1,44 +1,35 @@
 console.log('app');
-angular.module('myaccount', [
-  'ui.router'
-]);
+angular.module('myaccount', ['ui.router']);
 
-angular.module('myaccount').config(['$stateProvider', function($stateProvider){
-      $stateProvider
-        .state('root',{
-          url: '',
-          abstract: true,
-          views: {
-            'header': {
-              templateUrl: 'header.html',
-              controller: 'HeaderCtrl'
-            },
-            'footer':{
-              templateUrl: 'footer.html',
-              controller: 'FooterCtrl'
-            }
-          }
-        })
-        // .state('root.home', {
-        //   url: '/',
-        //   views: {
-        //     'container@': {
-        //       templateUrl: 'homePage.html'
-        //     }
-        //   }
-        // })
-        // .state('root.other', {
-        //   url: '/other',
-        //   views: {
-        //     'container@': {
-        //       templateUrl: 'other.html'
-        //     }
-        //   }
-        // })
-        ;
+angular.module('myaccount').config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
 
-    }]);
+  console.log( $locationProvider);
+  // push state
+  if (window.history && history.pushState) {
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
+  }
 
-angular.module('myaccount').controller('MainCtrl', function($scope) {
-  $scope.name = 'World';
-});
+  // ui router
+  $urlRouterProvider.otherwise('/');
+  $stateProvider
+    .state('main', {
+      url: '/',
+      views: {
+        'main_header': {
+          templateUrl: 'shared/header/header.html',
+          controller: 'HeaderController'
+        },
+        'main_container': {
+          templateUrl: 'shared/container/container.html',
+          controller: 'ContainerController'
+        },
+        'main_footer': {
+          templateUrl: 'shared/footer/footer.html',
+          controller: 'FooterController'
+        }
+      }
+    });
+}]);
